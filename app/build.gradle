@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.mi_post"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled = true
+            minifyEnabled false
+        }
+
+        release {
+            testCoverageEnabled = false
+            minifyEnabled true
+        }
+    }
+
+    testOptions.unitTests.all {
+        useJUnitPlatform()
+
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
+
+}
+
+dependencies {
+    //Dependencies
+    implementation deps.android.constraint_layout
+    implementation deps.android.lifecycle_extensions
+    implementation deps.android.ktx_fragment
+    implementation deps.android.fragment
+    implementation deps.android.appcompat
+    implementation deps.android.recyclerview
+    implementation deps.android.design
+
+    implementation deps.kotlin.kotlin_jre
+    implementation deps.kotlin.coroutines_core
+    implementation deps.kotlin.coroutines_android
+
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.coroutines_adapter
+
+    implementation deps.dagger.dagger
+    annotationProcessor deps.dagger.dagger_compiler
+    implementation deps.dagger.android_support
+    annotationProcessor deps.dagger.android_processor
+
+    implementation deps.room.runtime
+    kapt deps.room.compiler
+
+    testImplementation deps.test.junit
+    testRuntimeOnly deps.test.jupiter_engine
+    testRuntimeOnly deps.test.vintage_engine
+    testImplementation deps.test.mockk
+    testImplementation deps.test.kotlin_junit
+
+}
