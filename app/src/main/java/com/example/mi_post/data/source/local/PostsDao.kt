@@ -1,4 +1,4 @@
-package com.example.mi_post.data.local
+package com.example.mi_post.data.source.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

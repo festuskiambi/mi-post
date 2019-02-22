@@ -1,6 +1,6 @@
 package com.example.mi_post.di.modules
 
-import com.example.mi_post.data.remote.ApiInterface
+import com.example.mi_post.data.source.remote.ApiInterface
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

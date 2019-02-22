@@ -17,7 +17,7 @@ data class Post(
 
     @Json(name = "userId")
     @ColumnInfo(name = "user_id")
-    val userId: String?,
+    val userId: Int,
 
     @Json(name = "title")
     @ColumnInfo(name = "title")
