@@ -2,7 +2,8 @@ package com.example.mi_post.di.modules
 
 import android.app.Application
 import androidx.room.Room
-import com.example.mi_post.data.local.Database
+import com.example.mi_post.data.source.local.Database
+import com.example.mi_post.utils.NetworkConnectivity
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -26,4 +27,8 @@ class AppModule(val app: Application){
     @Provides
     @Singleton
     fun providePostsDao(database: Database) = database.postsDao()
+
+    @Provides
+    @Singleton
+    fun provideNetworkInfo(): NetworkConnectivity = NetworkConnectivity(app)
 }

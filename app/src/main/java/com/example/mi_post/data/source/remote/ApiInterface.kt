@@ -1,4 +1,4 @@
-package com.example.mi_post.data.remote
+package com.example.mi_post.data.source.remote
 
 import com.example.mi_post.data.model.Post
 import kotlinx.coroutines.Deferred
