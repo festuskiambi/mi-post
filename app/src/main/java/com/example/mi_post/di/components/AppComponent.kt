@@ -3,6 +3,7 @@ package com.example.mi_post.di.components
 import android.app.Application
 import com.example.mi_post.di.modules.AppModule
 import com.example.mi_post.di.modules.BuildersModule
+import com.example.mi_post.di.modules.NetModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
@@ -13,7 +14,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = arrayOf(AndroidInjectionModule::class, BuildersModule::class, AppModule::class)
+    modules = arrayOf(AndroidInjectionModule::class, BuildersModule::class, AppModule::class, NetModule::class)
 )
 interface AppComponent {
     fun inject(app: Application)

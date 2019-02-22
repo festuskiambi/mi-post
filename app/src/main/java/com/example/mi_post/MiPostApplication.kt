@@ -4,6 +4,8 @@ import android.app.Activity
 import android.app.Application
 import com.example.mi_post.di.components.DaggerAppComponent
 import com.example.mi_post.di.modules.AppModule
+import com.example.mi_post.di.modules.NetModule
+import com.example.mi_post.utils.Constants
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -19,8 +21,9 @@ class MiPostApplication : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-      DaggerAppComponent.builder()
+        DaggerAppComponent.builder()
             .appModule(AppModule(this))
+            .netModule(NetModule(Constants.BASE_URL))
             .build().inject(this)
     }
 
