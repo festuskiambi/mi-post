@@ -44,6 +44,7 @@ deps.room = room
 def retrofit = [:]
 retrofit.retrofit = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.coroutines_adapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$versions.coroutines_adapter"
+retrofit.converter = "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
 deps.retrofit = retrofit
 
 def moshi = [:]

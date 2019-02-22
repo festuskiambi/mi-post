@@ -59,6 +59,7 @@ dependencies {
 
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.coroutines_adapter
+    implementation deps.retrofit.converter
 
     implementation deps.dagger.dagger
     kapt deps.dagger.dagger_compiler
