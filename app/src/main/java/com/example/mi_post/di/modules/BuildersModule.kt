@@ -1,6 +1,6 @@
 package com.example.mi_post.di.modules
 
-import com.example.mi_post.ui.MainActivity
+import com.example.mi_post.ui.post.postlist.PostListActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -11,5 +11,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class BuildersModule {
 
     @ContributesAndroidInjector
-    abstract fun contibuteMainActivity(): MainActivity
+    abstract fun contibuteMainActivity(): PostListActivity
 }
