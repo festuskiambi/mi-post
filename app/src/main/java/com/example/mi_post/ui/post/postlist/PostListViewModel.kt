@@ -14,6 +14,16 @@ class PostListViewModel @Inject constructor(
 ) : BaseViewModel<PostListEvent>(uiContext) {
 
     override fun handleEvent(event: PostListEvent) {
+     when(event){
+         is PostListEvent.onStart -> getposts()
+         is PostListEvent.onPostItemClicked -> navigateToPostDetail(event.position)
+     }
+    }
 
+    private fun navigateToPostDetail(position: Int) {
+
+    }
+
+    private fun getposts() {
     }
 }
