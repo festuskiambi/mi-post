@@ -11,5 +11,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class BuildersModule {
 
     @ContributesAndroidInjector
-    abstract fun contibuteMainActivity(): PostListActivity
+    abstract fun contibutePostListActivity(): PostListActivity
 }
