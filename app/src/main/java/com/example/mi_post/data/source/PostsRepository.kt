@@ -10,21 +10,21 @@ import javax.inject.Inject
  * Created by Festus Kiambi on 2/22/19.
  */
 class PostsRepository @Inject constructor(
-    val apiInterface: ApiInterface,
-    val postsDao: PostsDao,
-    val networkConnectivity: NetworkConnectivity
+    private val apiInterface: ApiInterface,
+    private val postsDao: PostsDao,
+    private val networkConnectivity: NetworkConnectivity
 ) {
 
-   suspend fun getPosts(): List<Post>? {
+    suspend fun getPosts(): List<Post>? {
 
-       if (networkConnectivity.isConnected()){
-           return getPostsFromApi()
-       }
+        if (networkConnectivity.isConnected()) {
+            return getPostsFromApi()
+        }
 
-       return getPostsFromDb()
-   }
+        return getPostsFromDb()
+    }
 
-    suspend fun getPostsFromApi(): List<Post>? {
+   private  suspend fun getPostsFromApi(): List<Post>? {
         val results = apiInterface.getPosts().await().body()
 
         if (results != null) {
@@ -33,7 +33,7 @@ class PostsRepository @Inject constructor(
         return results
     }
 
-    suspend fun getPostsFromDb(): List<Post>? {
+    private fun getPostsFromDb(): List<Post>? {
         return postsDao.queryPosts().value
     }
 
