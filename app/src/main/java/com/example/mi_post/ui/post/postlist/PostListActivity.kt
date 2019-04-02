@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mi_post.R
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,10 +46,13 @@ class PostListActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
+       rv_list_posts.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        rv_list_posts.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         postListViewModel.postList.observe(
             this,
             Observer {notelist ->
                 adapter.submitList(notelist)
+
             }
         )
     }

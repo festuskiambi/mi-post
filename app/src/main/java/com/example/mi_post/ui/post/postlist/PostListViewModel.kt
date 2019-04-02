@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.mi_post.base.BaseViewModel
 import com.example.mi_post.data.model.Post
 import com.example.mi_post.data.source.PostsRepository
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
@@ -32,7 +33,7 @@ class PostListViewModel @Inject constructor(
     }
 
     private fun getposts() = launch {
-        val result = postsRepository.getPosts()
+        val result =  postsRepository.getPosts()
         postListState.value = result
     }
 }
