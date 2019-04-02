@@ -4,6 +4,8 @@ import com.example.mi_post.data.model.Post
 import com.example.mi_post.data.source.local.PostsDao
 import com.example.mi_post.data.source.remote.ApiInterface
 import com.example.mi_post.utils.NetworkConnectivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 /**
@@ -28,12 +30,12 @@ class PostsRepository @Inject constructor(
         val results = apiInterface.getPosts().await().body()
 
         if (results != null) {
-            for (result in results) this.postsDao.insertPost(result)
+           // for (result in results) this.postsDao.insertPost(result)
         }
         return results
     }
 
-     fun getPostsFromDb(): List<Post>? {
+     fun getPostsFromDb(): List<Post>?   {
         return postsDao.queryPosts().value
     }
 
