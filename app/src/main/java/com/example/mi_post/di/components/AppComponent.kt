@@ -1,6 +1,7 @@
 package com.example.mi_post.di.components
 
 import android.app.Application
+import com.example.mi_post.MiPostApplication
 import com.example.mi_post.di.modules.AppModule
 import com.example.mi_post.di.modules.BuildersModule
 import com.example.mi_post.di.modules.NetModule
@@ -17,5 +18,5 @@ import javax.inject.Singleton
     modules = arrayOf(AndroidInjectionModule::class, BuildersModule::class, AppModule::class, NetModule::class)
 )
 interface AppComponent {
-    fun inject(app: Application)
+    fun inject(app: MiPostApplication)
 }
