@@ -24,7 +24,7 @@ class PostsRepository @Inject constructor(
         return getPostsFromDb()
     }
 
-   private  suspend fun getPostsFromApi(): List<Post>? {
+    suspend fun getPostsFromApi(): List<Post>? {
         val results = apiInterface.getPosts().await().body()
 
         if (results != null) {
@@ -33,7 +33,7 @@ class PostsRepository @Inject constructor(
         return results
     }
 
-    private fun getPostsFromDb(): List<Post>? {
+     fun getPostsFromDb(): List<Post>? {
         return postsDao.queryPosts().value
     }
 
