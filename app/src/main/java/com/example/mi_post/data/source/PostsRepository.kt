@@ -30,13 +30,27 @@ class PostsRepository @Inject constructor(
         val results = apiInterface.getPosts().await().body()
 
         if (results != null) {
-           // for (result in results) this.postsDao.insertPost(result)
+            cacheResults(results)
         }
         return results
     }
 
-     fun getPostsFromDb(): List<Post>?   {
-        return postsDao.queryPosts().value
+    suspend fun cacheResults(results: List<Post>) = withContext(Dispatchers.IO) {
+        for (result in results){
+            postsDao.insertPost(result)
+        }
+
+    }
+
+    suspend fun getPostsFromDb() = withContext(Dispatchers.IO) {
+        val result = postsDao.queryPosts()
+
+        getCachedPosts(result)
+    }
+
+    private fun getCachedPosts(result: List<Post>?): List<Post>?{
+     return result
+
     }
 
 

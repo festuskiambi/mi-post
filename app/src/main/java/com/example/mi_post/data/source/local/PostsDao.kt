@@ -14,7 +14,7 @@ import com.example.mi_post.data.model.Post
 interface PostsDao {
 
     @Query("SELECT * FROM posts")
-    fun queryPosts(): LiveData<List<Post>>
+    fun queryPosts(): List<Post>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPost(post: Post)
