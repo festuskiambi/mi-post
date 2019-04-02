@@ -30,7 +30,6 @@ class PostsRepository @Inject constructor(
         val results = apiInterface.getPosts().await().body()
 
         if (results != null) {
-
             cacheResults(results)
         }
         return results
@@ -51,6 +50,7 @@ class PostsRepository @Inject constructor(
 
     private fun getCachedPosts(result: List<Post>?): List<Post>?{
      return result
+
     }
 
 
