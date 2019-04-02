@@ -1,9 +1,11 @@
 package com.example.mi_post.di.modules
 
 import android.app.Application
-import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
+import com.example.mi_post.data.source.PostsRepository
 import com.example.mi_post.data.source.local.Database
+import com.example.mi_post.data.source.local.PostsDao
+import com.example.mi_post.data.source.remote.ApiInterface
 import com.example.mi_post.ui.post.postlist.PostListViewModelFactory
 import com.example.mi_post.utils.NetworkConnectivity
 import dagger.Module
@@ -35,5 +37,12 @@ class AppModule(val app: Application) {
     fun provideNetworkInfo(): NetworkConnectivity = NetworkConnectivity(app)
 
     @Provides
-    fun providePostListViewModelFactory(factory: PostListViewModelFactory): ViewModelProvider.Factory = factory
+    fun providePostRepository(apiInterface: ApiInterface,postsDao: PostsDao,networkConnectivity: NetworkConnectivity):PostsRepository{
+      return PostsRepository(apiInterface,postsDao,networkConnectivity)
+    }
+
+    @Provides
+    fun providePostListViewModelFactory(postsRepository: PostsRepository):PostListViewModelFactory {
+        return PostListViewModelFactory(postsRepository)
+    }
 }

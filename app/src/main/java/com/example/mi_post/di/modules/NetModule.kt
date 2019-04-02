@@ -23,7 +23,7 @@ class NetModule(val baseUrl: String){
 
     @Provides
     @Singleton
-    fun providesokHttpClient():OkHttpClient = OkHttpClient.Builder().build()
+    fun providesOkHttpClient():OkHttpClient = OkHttpClient.Builder().build()
 
     @Provides
     @Singleton
